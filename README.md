@@ -2,7 +2,7 @@
 Repair instruction for IP Camera JVS-H411 (aka HZD-600DM)
 
 ###Steps for reflashing firmware
-+ Write firmware file `IPS_flash_up.bin` in root of the sd-card
++ Write firmware file `IPC_flash_up.bin` in root of the sd-card
 + Insert sd-card in the camera and reboot (power off/on)
 + Wait until camera boot up
 
