@@ -1,0 +1,18 @@
+hisilicon # printenv 
+bootdelay=1
+baudrate=115200
+ethaddr=00:00:23:34:45:66
+bootfile="uImage"
+ipaddr=172.16.34.7
+netmask=255.255.255.0
+gatewayip=172.16.34.1
+serverip=172.16.34.100
+bootargs=mem=43M console=ttyAMA0,115200 root=/dev/mtdblock3 mtdparts=hi_sfc:256K(boot),4608K(appfs),1728K(ker),1024K(rootfs),64K(hwconfig),512K(config),8M@0(flash)
+bootcmd=sf probe 0;sf read 0x82000000 0x4C0000 0x1B0000;bootm 0x82000000
+stdin=serial
+stdout=serial
+stderr=serial
+verify=n
+ver=U-Boot 2010.06 (Jul 31 2015 - 17:02:35)
+
+Environment size: 489/65532 bytes
