@@ -20,10 +20,10 @@ For the telnet connection try to use login `root` and password `jvbzd`.
 + Create appfs image `dd if=/dev/mtdblockN of=/tmp/sdcard/appfs.sqsh`
 + Unmount sdcard `umount /tmp/sdcard`
 + Copy appfs image to the host system
-+ Decompress image `unsquashfs appfs.sqsh`
-+ Edit what you want
++ Decompress image `# unsquashfs appfs.sqsh`
++ Edit what you want in `./squashfs-root`
 + Check the squashfs options (compression type, block size) of the original image `unsquashfs -s appfs.sqsh`
-+ Create new image `mksquashfs ./squashfs-root ./appfs-new.sqsh -comp TYPE -b SIZE`
++ Create new image `# mksquashfs ./squashfs-root ./appfs-new.sqsh -comp TYPE -b SIZE`
 + Check partition size `stat appfs.sqsh` (ORIGINAL_SIZE)
 + Check new image size `stat appfs-new.sqsh` (NEW_IMAGE_SIZE)
 + Important! Verify that the new image size is less then the original size
@@ -33,7 +33,7 @@ For the telnet connection try to use login `root` and password `jvbzd`.
 + Copy new padded image to sdcard
 + Repeat 1-4 steps (mount sdcard)
 + Write new appfs image `dd if=/tmp/sdcard/appfs-new.sqsh of=/dev/mtdblockN bs=64K`
-+ Umount sdcard
++ Unmount sdcard
 + Reboot device
 
 ###Resources
