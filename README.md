@@ -24,10 +24,15 @@ For the telnet connection try to use login `root` and password `jvbzd`.
 + Edit what you want
 + Check the squashfs options (compression type, block size) of the original image `unsquashfs -s appfs.sqsh`
 + Create new image `mksquashfs ./squashfs-root ./appfs-new.sqsh -comp TYPE -b SIZE`
-+ Copy new image to sdcard
++ Check partition size `stat appfs.sqsh` (ORIGINAL_SIZE)
++ Check new image size `stat appfs-new.sqsh` (NEW_IMAGE_SIZE)
++ Important! Verify that the new image size is less then the original size
++ Calculate padding file size `echo $((ORIGINAL_SIZE - NEW_IMAGE_SIZE))` (PADDING_SIZE)
++ Create padding file `dd if=/dev/zero ibs=PADDING_SIZE count=1 | tr "\000" "\377" > padding.bin`, where `tr` used to replace 0x00 to 0xFF
++ Merge the new image file with padding file `cat padding >> appfs-new.sqsh`
++ Copy new padded image to sdcard
 + Repeat 1-4 steps (mount sdcard)
-+ Check new image size `stat /tmp/sdcard/appfs-new.sqsh`
-+ Write new appfs image `dd if=/tmp/sdcard/appfs-new.sqsh of=/dev/mtdblockN bs=NEW_IMAGE_SIZE count=1`
++ Write new appfs image `dd if=/tmp/sdcard/appfs-new.sqsh of=/dev/mtdblockN bs=64K`
 + Umount sdcard
 + Reboot device
 
