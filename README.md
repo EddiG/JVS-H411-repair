@@ -36,6 +36,9 @@ For the telnet connection try to use login `root` and password `jvbzd`.
 + Unmount sdcard
 + Reboot device
 
+###Web commands
+`/cgi-bin/jvsweb.cgi?username=admin&password=admin&cmd=webhelp`
+
 ###Resources
 [Jovision's firmwares](http://down.jovision.com:81/cn/repair/)
 
